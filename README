@@ -1,13 +1,9 @@
-Описание
-Это драйвер для графического LCD от Nokia 3310, а также его китайских клонов.
-Базируется на коде библиотек написанных Sylvain Bissonnette и Fandi Gunawan:
-http://www.microsyl.com/index.php/2010/03/24/nokia-lcd-library/
-http://fandigunawan.wordpress.com/2008/06/18/lcd-nokia-3310-pcd8544-driver-in-winavravr-gcc/
-Основные отличия между оригиналом и клоном хорошо описаны в статье от Aheir:
-http://radiokot.ru/articles/29/
+Это драйвер для графического LCD от Nokia 3310, а также его китайских клонов. Базируется на коде библиотек написанных Sylvain Bissonnette - http://www.microsyl.com/index.php/2010/03/24/nokia-lcd-library/ и Fandi Gunawan - http://fandigunawan.wordpress.com/2008/06/18/lcd-nokia-3310-pcd8544-driver-in-winavravr-gcc/
+Основные отличия между оригиналом и клоном хорошо описаны в статье от Aheir - http://radiokot.ru/articles/29/
+Ещё один метод подключения от Sicorski - http://we.easyelectronics.ru/HomeTech/esche-odin-metod-podklyucheniya-lcd-ot-nokia-3310.html
 
-Автор:        Xander Gresolio <xugres@gmail.com>
-Веб-страница: http://we.easyelectronics.ru/profile/XANDER/
+Xander Gresolio <xugres@gmail.com>
+http://we.easyelectronics.ru/lcd_gfx/biblioteka-dlya-raboty-s-displeem-nokia-3310.html
 
 История
 Версия 1.0 (06.08.2011)
