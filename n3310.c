@@ -28,8 +28,6 @@
 
 #include <avr/io.h>
 #include <string.h>
-#include <avr/pgmspace.h>
-#include <avr/interrupt.h>
 #include "n3310.h"
 
 // Прототипы приватных функций драйвера

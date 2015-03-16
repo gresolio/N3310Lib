@@ -19,6 +19,8 @@
 #ifndef _N3310_H_
 #define _N3310_H_
 
+#include <avr/pgmspace.h>
+
 // закомментируйте эту директиву, если ваш дисплей оригинальный
 #define CHINA_LCD
 
