@@ -22,19 +22,18 @@
 #include <avr/pgmspace.h>
 
 // закомментируйте эту директиву, если ваш дисплей оригинальный
-#define CHINA_LCD
+//#define CHINA_LCD
 
 // Порт к которому подключен LCD (здесь пример распиновки для ATmega8)
-// Библиотека использует аппаратный SPI, поэтому если хотите иной порт - придется реализовать SPI программно)
 #define LCD_PORT                   PORTB
 #define LCD_DDR                    DDRB
 
 // Распиновка порта
 #define LCD_DC_PIN                 PB1
 #define LCD_CE_PIN                 PB2
-#define SPI_MOSI_PIN               PB3   // SDIN дисплея обязательно подключаем к MOSI аппаратного SPI
+#define LCD_DATA_PIN               PB3
 #define LCD_RST_PIN                PB4
-#define SPI_CLK_PIN                PB5   // SCLK дисплея обязательно подключаем к SCK аппаратного SPI
+#define LCD_CLK_PIN                PB5
 
 // Разрешение дисплея в пикселях
 #define LCD_X_RES                  84    // разрешение по горизонтали
