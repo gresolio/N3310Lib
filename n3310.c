@@ -28,8 +28,6 @@
 
 #include <avr/io.h>
 #include <string.h>
-#include <avr/pgmspace.h>
-#include <avr/interrupt.h>
 #include "n3310.h"
 
 // Прототипы приватных функций драйвера
@@ -58,7 +56,7 @@ static byte  UpdateLcd;
 
 /*
  * Имя                   :  LcdInit
- * Описание              :  Производит инициализацию порта и SPI МК, контроллера LCD
+ * Описание              :  Производит инициализацию порта МК и контроллера LCD
  * Аргумент(ы)           :  Нет
  * Возвращаемое значение :  Нет
  */
@@ -68,7 +66,7 @@ void LcdInit ( void )
     LCD_PORT |= _BV ( LCD_RST_PIN );
 
     // Устанавливаем нужные биты порта на выход
-    LCD_DDR |= _BV( LCD_RST_PIN ) | _BV( LCD_DC_PIN ) | _BV( LCD_CE_PIN ) | _BV( SPI_MOSI_PIN ) | _BV( SPI_CLK_PIN );
+    LCD_DDR |= _BV( LCD_RST_PIN ) | _BV( LCD_DC_PIN ) | _BV( LCD_CE_PIN ) | _BV(LCD_DATA_PIN) | _BV(LCD_CLK_PIN);
 
     // Некалиброванная задержка
     Delay();
@@ -77,10 +75,6 @@ void LcdInit ( void )
     LCD_PORT &= ~( _BV( LCD_RST_PIN ) );
     Delay();
     LCD_PORT |= _BV ( LCD_RST_PIN );
-
-    // Активируем SPI:
-    // без прерываний, старший бит первый, режим мастера, CPOL->0, CPHA->0, Clk/4
-    SPCR = 0x50;
 
     // Отключаем LCD контроллер - высокий уровень на SCE
     LCD_PORT |= _BV( LCD_CE_PIN );
@@ -222,20 +216,27 @@ static void LcdSend ( byte data, LcdCmdData cd )
     // Включаем контроллер дисплея (низкий уровень активный)
     LCD_PORT &= ~( _BV( LCD_CE_PIN ) );
 
-    if ( cd == LCD_DATA )
-    {
-        LCD_PORT |= _BV( LCD_DC_PIN );
-    }
+    byte i;
+
+    if (cd == LCD_DATA)
+        LCD_PORT |= _BV(LCD_DC_PIN);
     else
-    {
-        LCD_PORT &= ~( _BV( LCD_DC_PIN ) );
+        LCD_PORT &= ~_BV(LCD_DC_PIN);
+
+    for (i = 0; i < 8; i++) {
+
+        if ((data >> (7 - i)) & 1) {
+            LCD_PORT |= _BV(LCD_DATA_PIN);
+        } else {
+            LCD_PORT &= ~_BV(LCD_DATA_PIN);
+        }
+
+        LCD_PORT |= _BV(LCD_CLK_PIN);
+        LCD_PORT &= ~_BV(LCD_CLK_PIN);
+
     }
-
-    // Отправка данных в контроллер дисплея
-    SPDR = data;
-
-    // Ждем окончания передачи
-    while ( (SPSR & 0x80) != 0x80 );
+    LCD_PORT |= _BV(LCD_DATA_PIN);
+    LCD_PORT |= _BV(LCD_DC_PIN);
 
     // Отключаем контроллер дисплея
     LCD_PORT |= _BV( LCD_CE_PIN );
