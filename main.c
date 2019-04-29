@@ -1,4 +1,4 @@
-// В настройках проекта обязательно правильно укажите свою тактовую частоту
+// Р’ РЅР°СЃС‚СЂРѕР№РєР°С… РїСЂРѕРµРєС‚Р° РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РїСЂР°РІРёР»СЊРЅРѕ СѓРєР°Р¶РёС‚Рµ СЃРІРѕСЋ С‚Р°РєС‚РѕРІСѓСЋ С‡Р°СЃС‚РѕС‚Сѓ
 #include <avr/io.h>
 #include <util/delay.h>
 #include <avr/pgmspace.h>
@@ -43,10 +43,10 @@ int main()
 
         LcdClear();
             LcdGotoXYFont(0,2);
-            LcdFStr(FONT_2X,(unsigned char*)PSTR("МОГУЧИЙ"));
+            LcdFStr(FONT_2X,(unsigned char*)PSTR("РњРћР“РЈР§РР™"));
 
             LcdGotoXYFont(0,3);
-            LcdFStr(FONT_1X,(unsigned char*)PSTR("язык полностьюподдерживается:)  :)  :)  :)"));
+            LcdFStr(FONT_1X,(unsigned char*)PSTR("СЏР·С‹Рє РїРѕР»РЅРѕСЃС‚СЊСЋРїРѕРґРґРµСЂР¶РёРІР°РµС‚СЃСЏ:)  :)  :)  :)"));
         LcdUpdate();
 
 

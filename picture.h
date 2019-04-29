@@ -1,6 +1,6 @@
 /*
- * Картинка згенерирована програмой FastLCD Designer 1.2.0 by Bojan I. MICRODESIGN
- * Generate Bas table -> заменить все "&h" на "0x"
+ * РљР°СЂС‚РёРЅРєР° Р·РіРµРЅРµСЂРёСЂРѕРІР°РЅР° РїСЂРѕРіСЂР°РјРѕР№ FastLCD Designer 1.2.0 by Bojan I. MICRODESIGN
+ * Generate Bas table -> Р·Р°РјРµРЅРёС‚СЊ РІСЃРµ "&h" РЅР° "0x"
  */
 static const unsigned char Picture[] PROGMEM = {
 0x80,0x00,0x00,0x80,0x00,0x00,0x80,0x00,0x00,0x80,0x00,0x00,0x80,0x00,0x00,0x80,
